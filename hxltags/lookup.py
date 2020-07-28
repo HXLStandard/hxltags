@@ -47,7 +47,7 @@ def lookup_header(header, model):
 if __name__ == "__main__":
 
     if len(sys.argv) != 2:
-        print("Usage: {} <compiled-model>")
+        print("Usage: {} <compiled-model>".format(sys.argv[0]), file=sys.stderr)
         exit(2)
         
     filename = sys.argv[1]
