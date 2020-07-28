@@ -57,8 +57,11 @@ if __name__ == "__main__":
     s = input("\nColumn header: ")
     while s:
         matches = lookup_header(s, model)
-        for i, match in enumerate(matches):
-            if i >= 5:
-                break
-            print("  ", match[0], match[1])
+        if len(matches) > 0:
+            for i, match in enumerate(matches):
+                if i >= 5:
+                    break
+                print("  ", match[1], match[0].replace("+", " +"))
+        else:
+            print("  ** no matches **")
         s = input("\nColumn header: ")
