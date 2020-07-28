@@ -1,13 +1,20 @@
-Build a machine-learning model mapping text headers to HXL hashtags and attributes
-==================================================================================
+HXL hashtag lookup
+==================
 
-Build a machine-learning model for mapping text headers to HXL hashtags using a Naive Bayes Classifier. For more information about HXL, see https://hxlstandard.org
+Compile and use a model for matching text headers to HXL hashtags.
+
+For more information about HXL, see https://hxlstandard.org
 
 ## Requirements
 
 - Python 3
 - libhxl
-- textblob
+
+Use the command
+
+    $ pip3 install -r requirements.txt
+    
+to install the requirements.
 
 ## Usage
 
@@ -15,9 +22,18 @@ This package uses the output from https://github.com/HXLStandard/hdx-hashtag-cra
 
 The distribution includes a snapshot in inputs/ (but you can create your own, fresher one)
 
-Run the script as follows:
+### Command-line usage
 
-    $ python3 tag-prediction.py
+    $ python3 -m hxltags.compiler inputs/20200720-hxl-tags-atts.csv > my-model.json
+    $ python3 -m hxltags.lookup my-model.json
+    
+### Python usage
+
+    import hxltags.compiler, hxltags.lookup
+    
+    model = hxltags.compiler.build_model("inputs/20200720-hxl-tags-atts.csv")
+    
+    results = hxltags.lookup.lookup_header("Number of people affected", model)
 
 ## License
 
