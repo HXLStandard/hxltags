@@ -34,6 +34,16 @@ The distribution includes a snapshot in inputs/ (but you can create your own, fr
     model = hxltags.compiler.build_model("inputs/20200720-hxl-tags-atts.csv")
     
     results = hxltags.lookup.lookup_header("Number of people affected", model)
+    
+### Result format
+
+The results are a list of tuples consisting of a hashtag and a number. The higher the number, the more-certain the match. The most-certain matches appear first. Example:
+
+    [
+        ("#affected", 57,),
+        ("#affected+children+f", 43,),
+        ("#inneed+children", 22,),
+    ]
 
 ## License
 
